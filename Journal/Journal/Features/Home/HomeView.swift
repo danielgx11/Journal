@@ -80,9 +80,10 @@ struct HomeView: View {
     @Previewable @Environment(\.managedObjectContext) var viewContext
 
     let service = ServiceManager()
+    let useCase = HomeUseCase(service: service)
     let database = DatabaseManager(context: viewContext)
     let factory = HomeViewFactory()
-    let viewModel = HomeViewModel(service: service,
+    let viewModel = HomeViewModel(useCase: useCase,
                                   database: database,
                                   factory: factory)
     HomeView(viewModel: viewModel)

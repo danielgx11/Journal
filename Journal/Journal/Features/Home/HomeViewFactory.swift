@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeViewFactoryProtocol {
     func buildEntity() -> HomeViewEntity
+    func buildUserLocationEntity(with data: LocationData) -> UserLocationEntity
 }
 
 struct HomeViewFactory: HomeViewFactoryProtocol {
@@ -16,4 +17,9 @@ struct HomeViewFactory: HomeViewFactoryProtocol {
     func buildEntity() -> HomeViewEntity {
         HomeViewEntity()
     }
+    
+    func buildUserLocationEntity(with data: LocationData) -> UserLocationEntity {
+        UserLocationEntity(latitude: data.latitude, longitude: data.longitude)
+    }
+    
 }

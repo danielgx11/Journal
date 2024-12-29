@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol ServiceManagerProocol {
+protocol ServiceManagerProtocol {
     func fetch<T: Decodable>(request: ServiceRequest, type: T.Type) async throws -> T
 }
 
-final class ServiceManager: ServiceManagerProocol {
+final class ServiceManager: ServiceManagerProtocol {
     
     func fetch<T>(request: ServiceRequest, type: T.Type) async throws -> T where T : Decodable {
         guard let url = URL(string: request.url) else {
